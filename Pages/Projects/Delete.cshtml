@@ -1,0 +1,15 @@
+@page "{id:int}"
+@model Project_Management_System.Pages.Projects.DeleteModel
+@{
+    ViewData["Title"] = "Delete Project";
+}
+<h1>Delete Project</h1>
+<div class="alert alert-warning">Are you sure you want to delete this project? This action cannot be undone.</div>
+<div class="form-card mb-3">
+    <h4>@Model.Project.Name</h4>
+    <p>@Model.Project.Description</p>
+    <p><strong>Manager:</strong> @(string.IsNullOrWhiteSpace(Model.Project.ProjectManager) ? "Not assigned" : Model.Project.ProjectManager)</p>
+    <p><strong>Status:</strong> @Model.Project.Status</p>
+    <p><strong>Budget:</strong> @Model.Project.Budget.ToString("N2")</p>
+</div>
+<form method="post"><button type="submit" class="btn btn-danger">Confirm Delete</button> <a asp-page="Index" class="btn btn-light">Cancel</a></form>
