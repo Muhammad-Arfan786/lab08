@@ -1,11 +1,9 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Books_Management_System.Pages
+namespace Project_Management_System.Pages
 {
     public class ErrorModel : PageModel
     {
-        public void OnGet()
-        {
-        }
+        public void OnGet() { }
     }
 }
