@@ -1,0 +1,45 @@
+@page
+@model Project_Management_System.Pages.Projects.IndexModel
+@{
+    ViewData["Title"] = "Projects";
+}
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    <div><p class="eyebrow mb-1">WORKSPACE</p><h1 class="mb-0">Projects</h1></div>
+    <a asp-page="Create" class="btn btn-primary">+ Create Project</a>
+</div>
+@if (Model.Projects.Count == 0)
+{
+    <div class="empty-state">
+        <h3>No projects yet</h3>
+        <p class="text-muted">Create your first project to start managing its timeline, budget, and progress.</p>
+        <a asp-page="Create" class="btn btn-primary">Create First Project</a>
+    </div>
+}
+else
+{
+    <div class="card shadow-sm table-card">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead><tr><th>Project</th><th>Manager</th><th>Timeline</th><th>Budget</th><th>Priority</th><th>Status</th><th class="text-end">Actions</th></tr></thead>
+                <tbody>
+                @foreach (var project in Model.Projects)
+                {
+                    <tr>
+                        <td><strong>@project.Name</strong><div class="small text-muted">ID: @project.Id</div></td>
+                        <td>@(string.IsNullOrWhiteSpace(project.ProjectManager) ? "Not assigned" : project.ProjectManager)</td>
+                        <td class="text-nowrap"><span class="small">@project.StartDate.ToString("dd MMM yyyy")</span><br /><span class="small text-muted">to @project.EndDate.ToString("dd MMM yyyy")</span></td>
+                        <td>@project.Budget.ToString("N2")</td>
+                        <td><span class="priority priority-@project.Priority.ToLowerInvariant()">@project.Priority</span></td>
+                        <td><span class="status-pill">@project.Status</span></td>
+                        <td class="text-end text-nowrap">
+                            <a asp-page="Details" asp-route-id="@project.Id" class="btn btn-sm btn-outline-primary">View</a>
+                            <a asp-page="Edit" asp-route-id="@project.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                            <a asp-page="Delete" asp-route-id="@project.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
