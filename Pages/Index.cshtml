@@ -1,11 +1,19 @@
 @page
-@model Books_Management_System.Pages.HomeModel
+@model Project_Management_System.Pages.HomeModel
 @{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Dashboard";
 }
-<div class="home-panel">
-    <p class="eyebrow">BOOKS MANAGEMENT SYSTEM</p>
-    <h1>Manage your products in one place.</h1>
-    <p class="lead">Add products, view details, update stock, and keep your catalogue organized.</p>
-    <a asp-page="/Products/Index" class="btn btn-primary btn-lg">Open Product Catalogue</a>
+<section class="hero-panel">
+    <p class="eyebrow">PROJECT MANAGEMENT SYSTEM</p>
+    <h1>Plan projects. Track progress. Deliver results.</h1>
+    <p class="lead">A simple workspace to organize project details, budgets, timelines, priorities, and project status.</p>
+    <div class="d-flex flex-wrap gap-2">
+        <a asp-page="/Projects/Index" class="btn btn-primary btn-lg">View All Projects</a>
+        <a asp-page="/Projects/Create" class="btn btn-outline-primary btn-lg">Create Project</a>
+    </div>
+</section>
+<div class="row g-3 mt-2">
+    <div class="col-md-4"><div class="feature-card"><h5>Project Records</h5><p>Keep project names, descriptions, and managers organized.</p></div></div>
+    <div class="col-md-4"><div class="feature-card"><h5>Timeline Tracking</h5><p>Record start dates and deadlines for each project.</p></div></div>
+    <div class="col-md-4"><div class="feature-card"><h5>Budget & Priority</h5><p>Track project budgets, priorities, and current status.</p></div></div>
 </div>
