@@ -1,50 +1,48 @@
-# Books Management System
+# Project Management System (PMS)
 
-A beginner-friendly ASP.NET Core Razor Pages application for managing a product catalogue. It completes the supplied Create, Details, and Delete pages with the missing application components.
+A simple Project Management System built with ASP.NET Core Razor Pages, C#, Entity Framework Core, SQLite, and Bootstrap. The project uses the Repository Pattern to keep database access separate from page logic.
 
 ## Features
 
-- List all products
-- Add products with an image
-- View product details
-- Edit product information and optionally replace its image
-- Delete products and their stored images
-- Store title, description, price, quantity, and active/inactive status
-- Repository pattern for database operations
-- SQLite database created automatically on first run
-- Server-side validation and image extension/size checks
+- Create, view, edit, and delete projects (CRUD)
+- Store project name and description
+- Track project start date and end date
+- Manage project budget
+- Assign a project manager
+- Set project priority: Low, Medium, High, Critical
+- Track project status: Planning, In Progress, On Hold, Completed, Cancelled
+- Validate required fields and ensure the end date is not earlier than the start date
+- SQLite database is created automatically on first run
 
 ## Requirements
 
 - .NET 8 SDK
-- Internet access on first run to restore NuGet packages and load Bootstrap/jQuery CDN resources
+- Internet connection on first run for NuGet restore and Bootstrap CDN assets
 
 ## Run locally
 
-1. Clone this repository.
-2. Open a terminal in the folder containing Books_Management_System.csproj.
+1. Clone or download this repository.
+2. Open a terminal in the folder containing Project_Management_System.csproj.
 3. Run `dotnet restore`.
 4. Run `dotnet run`.
-5. Open the local URL printed in the terminal and choose Products or Add Product.
+5. Open the local URL printed in the terminal. Use Dashboard, Projects, or Create Project.
 
-## Database and images
+## Database
 
-- SQLite database: books-management.db (created automatically in the application working directory).
-- Product images: wwwroot/uploads/products/.
-- Supported image formats: JPG, JPEG, PNG, WEBP; maximum 5 MB each.
-- Database and uploaded images are runtime data and are excluded from Git.
+The application uses SQLite. The database file `project-management.db` is created automatically in the application working directory on first run. The database file is excluded from Git.
 
-## Main structure
+## Architecture
 
-- Data: ApplicationDbContext and ProductRepository
-- Models: Product
-- Services: ProductImageService
-- Pages/Products: Index, Create, Details, Edit, Delete (each with Razor page model)
-- Pages/Shared: application layout and validation scripts
-- wwwroot: CSS and uploaded product images
-- Program.cs: application setup and dependency registration
+- **Models/Project.cs** — project entity and validation rules.
+- **Data/ApplicationDbContext.cs** — Entity Framework Core database context.
+- **Data/ProjectRepository.cs** — repository pattern for project CRUD operations.
+- **Pages/Projects/** — Razor Pages for listing, creating, viewing, editing, and deleting projects.
+- **Program.cs** — dependency injection, database setup, and application pipeline.
 
-## Product status
+## Project status values
 
-- A = Active
-- I = Inactive
+Planning, In Progress, On Hold, Completed, Cancelled.
+
+## Priority values
+
+Low, Medium, High, Critical.
