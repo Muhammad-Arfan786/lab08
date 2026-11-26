@@ -1,0 +1,18 @@
+@page "{id:int}"
+@model Project_Management_System.Pages.Projects.DetailsModel
+@{
+    ViewData["Title"] = "Project Details";
+}
+<div class="d-flex justify-content-between align-items-center mb-4"><div><p class="eyebrow mb-1">PROJECT OVERVIEW</p><h1>Project Details</h1></div><a asp-page="Index" class="btn btn-light">Back to Projects</a></div>
+<div class="details-card">
+    <div class="d-flex flex-wrap justify-content-between gap-2 align-items-start"><div><h2>@Model.Project.Name</h2><p class="text-muted">Project #@Model.Project.Id</p></div><span class="status-pill">@Model.Project.Status</span></div>
+    <p class="project-description">@(string.IsNullOrWhiteSpace(Model.Project.Description) ? "No description provided." : Model.Project.Description)</p>
+    <div class="row g-3 mt-2">
+        <div class="col-sm-6"><div class="detail-tile"><span>Project Manager</span><strong>@(string.IsNullOrWhiteSpace(Model.Project.ProjectManager) ? "Not assigned" : Model.Project.ProjectManager)</strong></div></div>
+        <div class="col-sm-6"><div class="detail-tile"><span>Budget</span><strong>@Model.Project.Budget.ToString("N2")</strong></div></div>
+        <div class="col-sm-6"><div class="detail-tile"><span>Start Date</span><strong>@Model.Project.StartDate.ToString("dd MMM yyyy")</strong></div></div>
+        <div class="col-sm-6"><div class="detail-tile"><span>End Date</span><strong>@Model.Project.EndDate.ToString("dd MMM yyyy")</strong></div></div>
+        <div class="col-sm-6"><div class="detail-tile"><span>Priority</span><strong>@Model.Project.Priority</strong></div></div>
+    </div>
+    <div class="mt-4"><a asp-page="Edit" asp-route-id="@Model.Project.Id" class="btn btn-primary">Edit Project</a> <a asp-page="Delete" asp-route-id="@Model.Project.Id" class="btn btn-outline-danger">Delete Project</a></div>
+</div>
