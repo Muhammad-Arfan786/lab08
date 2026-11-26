@@ -24,7 +24,7 @@ namespace Project_Management_System.Models
         [Display(Name = "End Date")]
         public DateTime EndDate { get; set; } = DateTime.Today.AddDays(30);
 
-        [Range(typeof(decimal), "0", "999999999999", ErrorMessage = "Budget must be zero or greater.")]
+        [Range(typeof(decimal), "0", "9999999999.99", ErrorMessage = "Budget must be zero or greater.")]
         public decimal Budget { get; set; }
 
         [Required]
